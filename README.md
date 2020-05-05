@@ -1,23 +1,23 @@
 # pwbus-web
 
-Client for PWBus.
+API to make request for PWBus.
 
-[See code in GitHub](https://github.com/fszostak/pwbus-client)
+[See code in GitHub](https://github.com/fszostak/pwbus-request)
 
 Install:
 
 ```
-$ pip3 install pwbus-client
+$ pip3 install pwbus-request
 ```
 
-Bootle Client
+Bootle request
 ```
 @get('/ping')
 def ping():
     print("PING (request)")
     sys.stdout.flush()
     try:
-        pwbus = PwbusBootleClient(
+        pwbus = PwbusBootleRequest(
             request=request,
             response=response,
             channel="scarlet-web-channel", 
@@ -40,7 +40,7 @@ def ping():
         return json.dumps({'success': False})
 ```
 
-Flask Client
+Flask request
 ```
 TODO
 ```

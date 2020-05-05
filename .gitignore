@@ -3,7 +3,7 @@
 *.pyc
 **/__pycache__/
 .DS_Store
-pwbus.egg-info/
+*.egg-info/
 build/
 dist/
 .eggs/

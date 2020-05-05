@@ -1,17 +1,17 @@
-# PWBus - BottleClient Class
+# PWBus - PwbusBootleRequest Class
 #:
 #:  maintainer: fabio.szostak@perfweb.com.br | Sun Apr 26 22:09:45 -03 2020
 
-import traceback
+import sys
 
-from pwbus_client.client import Client
+from pwbus_request.request import Request
 
-# BottleClient
+# PwbusBootleRequest
 #
 #
 
 
-class PwbusBootleClient(Client):
+class PwbusBootleRequest(Request):
 
     def setResponseHeaders(self, headers):
         try:
@@ -19,6 +19,6 @@ class PwbusBootleClient(Client):
                 if key in ['Pwbus-Message-Id', 'Pwbus-Correlation-Id', 'Pwbus-Status-Code']:
                     self.response.add_header(key, headers[key])
         except:
-            print("Error: pwbus_web.client.PwbusBootleClient.setResponseHeaders")
-            traceback.print_exc()
+            print(
+                f'Error: pwbus_request.PwbusBootleRequest.setResponseHeaders - Message {sys.exc_info()[-1]}')
             raise

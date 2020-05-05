@@ -1,4 +1,4 @@
-# PWBus - Client Class
+# PWBus - Request Class
 #:
 #:  maintainer: fabio.szostak@perfweb.com.br | Sun Apr 26 21:48:20 -03 2020
 
@@ -7,12 +7,12 @@ import traceback
 from json import dumps
 import requests
 
-# BootleClient
+# Request
 #
 #
 
 
-class Client():
+class Request():
     def __init__(self, request, response, channel, task_id):
         self.request = request
         self.response = response
@@ -49,7 +49,7 @@ class Client():
 
         except:
             traceback.print_exc()
-            print("Error: pwbus_web.client.Client.getHeaders")
+            print("Error: pwbus-http.request.request.getHeaders")
             raise
 
     def setResponseHeaders(self, headers):
@@ -58,15 +58,15 @@ class Client():
     def post(self, payload, headers, text_response=True):
         try:
             data = requests.post(
-                "http://pwbus-web/pwbus/v1/request",
+                "http://pwbus-http/pwbus/v1/request",
                 data=dumps(payload),
                 headers=headers
             )
             resp_headers = dict(data.headers)
             self.setResponseHeaders(resp_headers)
-            return {"data": data.text if text_response else data, "headers": resp_headers}
+            return {"data": data.json() if text_response else data, "headers": resp_headers}
 
         except:
             traceback.print_exc()
-            print("Error: pwbus_web.client.Client.post")
+            print("Error: pwbus_http.request.post")
             raise

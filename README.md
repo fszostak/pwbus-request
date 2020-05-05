@@ -2,8 +2,6 @@
 
 API to make request for PWBus.
 
-[See code in GitHub](https://github.com/fszostak/pwbus-request)
-
 Install:
 
 ```

@@ -1,4 +1,4 @@
-# pwbus-web
+# pwbus-request
 
 API to make request for PWBus.
 

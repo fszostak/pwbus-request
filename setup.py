@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name="pwbus-request",
-    version="0.1.2",
+    version="0.1.9",
     author="Fabio Szostak",
     author_email="fszostak@gmail.com",
     description="API to make request for PWBUS. Developed for the following frameworks Flask, Bottle",

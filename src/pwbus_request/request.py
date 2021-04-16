@@ -57,11 +57,18 @@ class Request():
 
     def post(self, payload, headers, text_response=True):
         try:
-            data = requests.post(
-                "http://pwbus-http/pwbus/v1/request",
-                data=dumps(payload),
-                headers=headers
-            )
+            if self.isRetry():
+                data = requests.post(
+                    "http://pwbus-http/pwbus/v1/retry",
+                    data={},
+                    headers=headers
+                )
+            else:
+                data = requests.post(
+                    "http://pwbus-http/pwbus/v1/request",
+                    data=dumps(payload),
+                    headers=headers
+                )
             resp_headers = dict(data.headers)
             self.setResponseHeaders(resp_headers)
             return {"data": data.json() if text_response else data, "headers": resp_headers}
